@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionFragment">
+
+    <LinearLayout
+        android:id="@+id/questionLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/questionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Question1"
+            android:textSize="22sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/choice1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Answer1"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/choice2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Answer2"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/choice3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Answer3"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/choice4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Answer4"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/choice5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Answer5"
+                android:textSize="20sp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</FrameLayout>

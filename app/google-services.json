@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "310596398498",
+    "project_id": "dynamicquiz-4b863",
+    "storage_bucket": "dynamicquiz-4b863.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310596398498:android:bb1ced70abda6d8b0d16fb",
+        "android_client_info": {
+          "package_name": "com.example.dynamicquiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkYhNCcuFd9DV159Hexx_sftvet6Qbje4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
