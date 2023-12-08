@@ -25,7 +25,7 @@ public class QuizActivity extends AppCompatActivity {
 //        quizPageViewModel.getAnswer();
 //        quizPageViewModel.getCorrectAnswer();
 
-        QuestionFragmentStateAdapter stateAdapter =new QuestionFragmentStateAdapter(this, quizBinding.tabLayout, quizBinding.viewPager);
+        QuestionFragmentStateAdapter stateAdapter = new QuestionFragmentStateAdapter(this, quizBinding.tabLayout, quizBinding.viewPager);
         quizBinding.viewPager.setAdapter(stateAdapter);
         stateAdapter.setUpTabLayoutMediator();
     }

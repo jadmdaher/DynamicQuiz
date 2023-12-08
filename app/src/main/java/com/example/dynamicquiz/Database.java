@@ -7,8 +7,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Database {
     //Constructor
@@ -18,21 +22,28 @@ public class Database {
         FirebaseFirestore db = this.db;
     }
 
+    public static Question[] questions = new Question[5];
+
+    //
+    public static List<String> questionList = new ArrayList<>();
+    public static List<String[]> answerList = new ArrayList<>();
+    public static List<String> correctAnswerList = new ArrayList<>();
+    //
+
     public String question;
     public String answer[] = new String[5];
     public String correctAnswer;
 
-
     public void insertData(){
         // Create a new user with a first and last name
         Map<String, Object> question = new HashMap<>();
-        question.put("Question2", "Which programming language is commonly used for native Android app development?");
-        question.put("Answer1", "Swift");
-        question.put("Answer2", "Java");
-        question.put("Answer3", "Python");
-        question.put("Answer4", " C#");
-        question.put("Answer5", "Ruby");
-        question.put("CorrectAnswer", "Answer2");
+        question.put("Question5", "What does API stand for in the context of mobile app development?");
+        question.put("Q5A1", "Application Programming Interface");
+        question.put("Q5A2", "Advanced Programming Interface");
+        question.put("Q5A3", "Automated Program Interaction");
+        question.put("Q5A4", "App Processing Interface");
+        question.put("Q5A5", "Android Programming Instruction");
+        question.put("Q5CA", "Q5A1");
 
         // Add a new document with a generated ID
         db.collection("questions")
@@ -52,19 +63,31 @@ public class Database {
     }
 
     public void fetchData(){
+        AtomicInteger i = new AtomicInteger(1);
         db.collection("questions")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            question = document.getString("Question1");
-                            answer[0] = document.getString("Answer1");
-                            answer[1] = document.getString("Answer2");
-                            answer[2] = document.getString("Answer3");
-                            answer[3] = document.getString("Answer4");
-                            answer[4] = document.getString("Answer5");
-                            correctAnswer = document.getString("CorrectAnswer");
-                            Log.d("FIREBASE_TAG", document.getId() + document.getString("questions"));
+                            if(i.get() <= 5){
+                                question = document.getString("Question" + i);
+                                answer[0] = document.getString("Q" + i + "A1");
+                                answer[1] = document.getString("Q" + i + "A2");
+                                answer[2] = document.getString("Q" + i + "A3");
+                                answer[3] = document.getString("Q" + i + "A4");
+                                answer[4] = document.getString("Q" + i + "A5");
+                                correctAnswer = document.getString("Q" + i + "CA");
+                                //questions[i.get() - 1] = new Question(question, answer, correctAnswer);
+                                questionList.add(i.get() - 1, question);
+                                //Test
+                                System.out.println("Question: " + question);
+                                //
+                                answerList.add(i.get() - 1, answer);
+                                correctAnswerList.add(i.get() - 1, correctAnswer);
+                                //
+                                i.getAndIncrement();
+                                Log.d("FIREBASE_TAG", document.getId() + document.getString("questions"));
+                            }
                         }
                     } else {
                         Log.w("FIREBASE_TAG", "Error getting documents.", task.getException());

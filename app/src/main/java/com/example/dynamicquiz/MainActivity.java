@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         db = new Database();
 //        ((MyApp)getApplication()).setDataBase(db);
 
-        db.insertData();
+//        db.insertData();
         db.fetchData();
 
         mainBinding.startQuiz.setOnClickListener(v -> {
