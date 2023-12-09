@@ -17,7 +17,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
-//    QuizPageViewModel quizPageViewModel;
+    public static QuizPageViewModel quizPageViewModel;
+    public static MyApp myApp;
     public static Database db;
 
     @Override
@@ -26,14 +27,15 @@ public class MainActivity extends AppCompatActivity {
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
 
-//        quizPageViewModel = new ViewModelProvider(this).get(QuizPageViewModel.class);
-//        ((MyApp)getApplication()).quizPageViewModel = quizPageViewModel;
+        myApp = new MyApp();
+
+        quizPageViewModel = new ViewModelProvider(this).get(QuizPageViewModel.class);
+        myApp.setQuizPageViewModel(quizPageViewModel);
 
         db = new Database();
-//        ((MyApp)getApplication()).setDataBase(db);
 
-//        db.insertData();
-        db.fetchData();
+//        db.writeData();
+        quizPageViewModel.setQuestions(db.readData());
 
         mainBinding.startQuiz.setOnClickListener(v -> {
             Intent intent = new Intent(this, QuizActivity.class);
