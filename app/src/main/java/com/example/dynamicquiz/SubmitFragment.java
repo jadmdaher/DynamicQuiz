@@ -25,15 +25,6 @@ public class SubmitFragment extends Fragment {
         return fragment;
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-////            mParam1 = getArguments().getString(ARG_PARAM1);
-////            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,19 +33,14 @@ public class SubmitFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showStatistics(StatisticsFragment.newInstance());
+                showStatistics();
             }
         });
         return frameLayout;
     }
 
-    private void showStatistics(Fragment fragment) {
+    private void showStatistics() {
         Intent intent = new Intent(getActivity(), StatisticsActivity.class);
         startActivity(intent);
     }
-
-//    @Override
-//    public void onViewCreated(View view, Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//    }
 }
