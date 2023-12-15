@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class QuestionFragmentStateAdapter extends FragmentStateAdapter {
     Question[] questionsArray = quizPageViewModel.getQuestions();
-    QuestionFragment fragment[];
+    Fragment fragment[];
     String fragmentHeader[];
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
@@ -24,12 +24,13 @@ public class QuestionFragmentStateAdapter extends FragmentStateAdapter {
         super(fragmentActivity);
         this.tabLayout = tabLayout;
         this.viewPager = viewPager;
-        fragmentHeader = new String[]{"1", "2", "3", "4", "5"};
-        fragment = new QuestionFragment[]{QuestionFragment.newInstance(questionsArray[0].getQuestion(), questionsArray[0].getAnswer(), questionsArray[0].getCorrectAnswer()),
-                QuestionFragment.newInstance(questionsArray[1].getQuestion(), questionsArray[1].getAnswer(), questionsArray[1].getCorrectAnswer()),
-                QuestionFragment.newInstance(questionsArray[2].getQuestion(), questionsArray[2].getAnswer(), questionsArray[2].getCorrectAnswer()),
-                QuestionFragment.newInstance(questionsArray[3].getQuestion(), questionsArray[3].getAnswer(), questionsArray[3].getCorrectAnswer()),
-                QuestionFragment.newInstance(questionsArray[4].getQuestion(), questionsArray[4].getAnswer(), questionsArray[4].getCorrectAnswer())};
+        fragmentHeader = new String[]{"1", "2", "3", "4", "5", "Submit"};
+        fragment = new Fragment[]{QuestionFragment.newInstance(0, questionsArray[0].getQuestion(), questionsArray[0].getAnswer(), questionsArray[0].getCorrectAnswer()),
+                QuestionFragment.newInstance(1, questionsArray[1].getQuestion(), questionsArray[1].getAnswer(), questionsArray[1].getCorrectAnswer()),
+                QuestionFragment.newInstance(2, questionsArray[2].getQuestion(), questionsArray[2].getAnswer(), questionsArray[2].getCorrectAnswer()),
+                QuestionFragment.newInstance(3, questionsArray[3].getQuestion(), questionsArray[3].getAnswer(), questionsArray[3].getCorrectAnswer()),
+                QuestionFragment.newInstance(4, questionsArray[4].getQuestion(), questionsArray[4].getAnswer(), questionsArray[4].getCorrectAnswer()),
+                SubmitFragment.newInstance()};
     }
 
     public void setUpTabLayoutMediator() {

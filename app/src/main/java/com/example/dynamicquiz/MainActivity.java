@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     public static MyApp myApp;
     public static Database db;
 
+    public static boolean score[] = new boolean[5];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        db.writeData();
         quizPageViewModel.setQuestions(db.readData());
+        quizPageViewModel.setScore(score);
 
         mainBinding.startQuiz.setOnClickListener(v -> {
             Intent intent = new Intent(this, QuizActivity.class);

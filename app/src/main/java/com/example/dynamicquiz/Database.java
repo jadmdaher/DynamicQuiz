@@ -46,7 +46,7 @@ public class Database {
         question1.put("Q1A3", "Python");
         question1.put("Q1A4", "C++");
         question1.put("Q1A5", "C#");
-        question1.put("Q1CA", "Q1A1");
+        question1.put("Q1CA", "Java");
         questions.document("Question1").set(question1);
         Log.d("FIREBASE_TAG", "DocumentSnapshot added with ID: " + questions.document("Question1").getId());
 
@@ -57,7 +57,7 @@ public class Database {
         question2.put("Q2A3", "IntelliJ IDEA");
         question2.put("Q2A4", "Visual Studio");
         question2.put("Q2A5", "NetBeans");
-        question2.put("Q2CA", "Q2A1");
+        question2.put("Q2CA", "Android Studio");
         questions.document("Question2").set(question2);
         Log.d("FIREBASE_TAG", "DocumentSnapshot added with ID: " + questions.document("Question2").getId());
 
@@ -68,7 +68,7 @@ public class Database {
         question3.put("Q3A3", "Python");
         question3.put("Q3A4", "C++");
         question3.put("Q3A5", "C#");
-        question3.put("Q3CA", "Q3A1");
+        question3.put("Q3CA", "Swift");
         questions.document("Question3").set(question3);
         Log.d("FIREBASE_TAG", "DocumentSnapshot added with ID: " + questions.document("Question3").getId());
 
@@ -79,7 +79,7 @@ public class Database {
         question4.put("Q4A3", "IntelliJ IDEA");
         question4.put("Q4A4", "Visual Studio");
         question4.put("Q4A5", "NetBeans");
-        question4.put("Q4CA", "Q4A1");
+        question4.put("Q4CA", "Xcode");
         questions.document("Question4").set(question4);
         Log.d("FIREBASE_TAG", "DocumentSnapshot added with ID: " + questions.document("Question4").getId());
 
@@ -90,45 +90,10 @@ public class Database {
         question5.put("Q5A3", "Automated Program Interaction");
         question5.put("Q5A4", "App Processing Interface");
         question5.put("Q5A5", "Android Programming Instruction");
-        question5.put("Q5CA", "Q5A1");
+        question5.put("Q5CA", "Application Programming Interface");
         questions.document("Question5").set(question5);
         Log.d("FIREBASE_TAG", "DocumentSnapshot added with ID: " + questions.document("Question5").getId());
     }
-
-//    public void readData(){
-//        AtomicInteger i = new AtomicInteger(1);
-//        db.collection("questions")
-//                .get()
-//                .addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//                        for (QueryDocumentSnapshot document : task.getResult()) {
-//                            if(i.get() <= 5){
-//
-//
-////                                question = document.getString("Question" + i);
-////                                answer[0] = document.getString("Q" + i + "A1");
-////                                answer[1] = document.getString("Q" + i + "A2");
-////                                answer[2] = document.getString("Q" + i + "A3");
-////                                answer[3] = document.getString("Q" + i + "A4");
-////                                answer[4] = document.getString("Q" + i + "A5");
-////                                correctAnswer = document.getString("Q" + i + "CA");
-////                                //questions[i.get() - 1] = new Question(question, answer, correctAnswer);
-////                                questionList.add(i.get() - 1, question);
-////                                //Test
-////                                System.out.println("Question: " + question);
-////                                //
-////                                answerList.add(i.get() - 1, answer);
-////                                correctAnswerList.add(i.get() - 1, correctAnswer);
-//                                //
-//                                i.getAndIncrement();
-//                                Log.d("FIREBASE_TAG", document.getId() + document.getString("questions"));
-//                            }
-//                        }
-//                    } else {
-//                        Log.w("FIREBASE_TAG", "Error getting documents.", task.getException());
-//                    }
-//                });
-//    }
 
     public Question[] readData() {
         Question questionsArray[] = new Question[5];
@@ -147,7 +112,7 @@ public class Database {
                                                     document.getString("Q" + i + "A3"),
                                                     document.getString("Q" + i + "A4"),
                                                     document.getString("Q" + i + "A5")},
-                                            document.getString("Q" + i + "CA"));
+                                                    document.getString("Q" + i + "CA"));
                                     i.getAndIncrement();
                                     Log.d("FIREBASE_TAG", document.getId() + " => " + document.getData());
                                 }
